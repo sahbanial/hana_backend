@@ -1,0 +1,25 @@
+type Notification {
+  id: ID
+  body: String
+  project: Project
+  readed: Boolean
+  createdAt: Float
+}
+type FivePoint {
+  id: ID
+  question: String
+  createdAt: Float
+}
+input FivePointInput {
+  question: String
+  project: String
+}
+extend type Mutation {
+  updateNotifications: Boolean
+  addQuestion(input: FivePointInput): FivePoint
+}
+
+extend type Query {
+  getNotifications: [Notification]
+  getFivePoints(project: String): [FivePoint]
+}

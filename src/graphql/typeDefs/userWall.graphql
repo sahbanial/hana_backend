@@ -1,0 +1,34 @@
+type UserWall {
+  id: String
+  lastName: String
+  firstName: String
+  tel: String
+  address: String
+  profile: User
+  photoUrl: String
+  fullName: String
+}
+type Level {
+  id: ID
+  name: String
+  projects: [Project]
+}
+type Organisation {
+  id: ID
+  name: String
+  levels: [Level]
+}
+input OrganisationInput {
+  name: String
+}
+input InputLevel {
+  name: String
+  organisation: String
+}
+extend type Query {
+  getOrganisations: [Organisation]
+}
+extend type Mutation {
+  addOrganisation(input: OrganisationInput): Organisation
+  addLevel(input: InputLevel): Level
+}

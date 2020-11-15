@@ -1,0 +1,58 @@
+type Project {
+  id: ID
+  name: String
+  level: Level
+  usersWall: [UserWall]
+  myRole: String
+  createdAt: Float
+}
+
+type Comment {
+  id: ID
+  media: String
+  body: String
+  post: Post
+  createdBy: UserWall
+  createdAt: Float
+}
+type Post {
+  id: ID
+  media: String
+  body: String
+  likes: [String]
+  comments: [Comment]
+  createdBy: UserWall
+  isMyPost: Boolean
+  createdAt: Float
+  updatedAt: Float
+}
+input InputPost {
+  media: Upload
+  body: String
+  project: String
+}
+input InputComment {
+  post: String
+  type: String
+  body: String
+}
+input CommentUpdate {
+  body: String
+}
+input ProjectInput {
+  name: String
+  level: String
+}
+extend type Mutation {
+  addPost(input: InputPost): Post
+  addComment(input: InputComment): Comment
+  deleteComment(id: String): Comment
+  updateComment(id: String, input: CommentUpdate): Comment
+  addLike(post: String): Post
+  addProject(input: ProjectInput): Project
+  deletePost(post: String): Post
+  updatePost(id: String, input: InputPost): Post
+}
+extend type Query {
+  getPosts(project: String, tag: String): [Post]
+}
