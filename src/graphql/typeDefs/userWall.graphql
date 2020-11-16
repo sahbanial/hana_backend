@@ -7,6 +7,7 @@ type UserWall {
   profile: User
   photoUrl: String
   fullName: String
+  userName: String
 }
 type Level {
   id: ID
@@ -27,6 +28,7 @@ input InputLevel {
 }
 extend type Query {
   getOrganisations: [Organisation]
+  getMyProfile: UserWall
 }
 extend type Mutation {
   addOrganisation(input: OrganisationInput): Organisation

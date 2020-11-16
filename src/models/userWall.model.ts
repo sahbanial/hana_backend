@@ -11,6 +11,7 @@ const projectSchema= new Schema({
 		enum:["MANAGER","OBSERVER","MENEGER"]
 	}
 });
+
 const userWallSchema = new Schema(
 	{
 		id: String,

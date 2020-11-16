@@ -30,5 +30,8 @@ export default {
     },
     getFivePoints:(r,{project})=>{
         return FivePointModel.find({project});
+    },
+    getMyProfile:(r,{},{user})=>{
+        return user;
     }
 };
